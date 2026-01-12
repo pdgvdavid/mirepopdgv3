@@ -1,0 +1,25 @@
+name: INTEGRACIOM CONTINUA
+
+on:
+  push:
+    branches:
+      - master  # o main, según tu rama principal
+
+jobs:
+  build-and-test:
+    runs-on: windows-latest #ubuntu-latest    # mejor usar Linux para Java
+
+    steps:
+    - name: 🧲 Checkout repo
+      uses: actions/checkout@v3
+
+    - name: ☕ Setup Java 22
+      uses: actions/setup-java@v3
+      with:
+        java-version: '22'
+        distribution: 'temurin'   # puedes usar temurin, zulu, etc.
+        cache: 'maven'            # cachea dependencias para acelerar
+
+    - name: 📦 Build & Run Tests (Maven)
+      working-directory: demo9_herokuapp   # ajusta a la carpeta donde está tu pom.xml abcde
+      run: mvn clean test -Dtest=RunnerTest
