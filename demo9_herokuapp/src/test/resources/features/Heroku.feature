@@ -50,7 +50,7 @@ Feature: historia request a heroku
           And se adiciona body
           """
           {
-    "firstname": "xyz",
+    "firstname": "xyzwwww",
     "lastname": "Brown",
     "totalprice": 111,
     "depositpaid": true,
